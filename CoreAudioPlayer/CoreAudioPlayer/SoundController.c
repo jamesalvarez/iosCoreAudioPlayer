@@ -177,7 +177,7 @@ void CAPLoadAudioPlayer(CFURLRef url, CAPAudioPlayer * audioPlayer) {
     UInt32 readFrames = 0;
     while (readFrames < fileLengthInFrames) {
         UInt32 framesLeftToRead = (UInt32)fileLengthInFrames - readFrames;
-        UInt32 framesToRead = (16384 < framesLeftToRead) ? framesLeftToRead : 16384;
+        UInt32 framesToRead = (framesLeftToRead < 16384) ? framesLeftToRead : 16384;
         
         // Set the scratch buffer to point to the correct position on the real buffer
         scratchBufferList->mNumberBuffers = bufferList->mNumberBuffers;
